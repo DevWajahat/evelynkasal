@@ -5,7 +5,7 @@
             <h3 class="text-xl font-bold font-heavitas text-white mb-6 tracking-wide">Links</h3>
             <ul class="flex flex-col space-y-4 text-gray-300 font-['Poppins'] text-sm">
                 <li><a href="#" class="hover:text-white transition-colors">Evelyn Kasal</a></li>
-                <li><a href="#" class="hover:text-white transition-colors">Eureka and the Magical Trio Book</a></li>
+                <!-- <li><a href="#" class="hover:text-white transition-colors">Eureka and the Magical Trio Book</a></li> -->
                 <li><a href="#" class="hover:text-white transition-colors">About the Author</a></li>
                 <li><a href="#" class="hover:text-white transition-colors">Blogs</a></li>
             </ul>
