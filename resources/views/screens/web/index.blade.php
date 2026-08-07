@@ -79,9 +79,9 @@
                     RARE EDITION: How Many Unusual Events in One Life?
                 </h4>
 
-                <div class="flex items-baseline gap-3 mb-6">
-                    <span class="text-2xl font-black text-[#145072]">$9.99</span>
-                </div>
+                <!-- <div class="flex items-baseline gap-3 mb-6"> -->
+                <!--     <span class="text-2xl font-black text-[#145072]">$9.99</span> -->
+                <!-- </div> -->
 
                 <div class="flex items-center gap-6 mb-8">
                     <div class="flex items-center gap-3">

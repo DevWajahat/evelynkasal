@@ -89,10 +89,10 @@
                         Rare Edition: How Many Unusual Events in One Life?
                     </h2>
 
-                    <div class="flex items-baseline justify-center lg:justify-start gap-3 mt-1">
-                        <span class="text-3xl font-black text-[#145072]">$51</span>
-                        <!-- <span class="text-2xl text-gray-400 line-through font-bold decoration-[3px]">$13</span> -->
-                    </div>
+                    <!-- <div class="flex items-baseline justify-center lg:justify-start gap-3 mt-1"> -->
+                    <!--     <span class="text-3xl font-black text-[#145072]">$51</span> -->
+                    <!--     <!-- <span class="text-2xl text-gray-400 line-through font-bold decoration-[3px]">$13</span> -->
+                    <!-- </div> -->
 
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 py-4">
                         <div class="flex items-center gap-3">
