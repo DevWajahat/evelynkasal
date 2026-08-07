@@ -24,7 +24,7 @@
                 Get in Touch
             </h2>
             <p class="text-gray-600 font-['Poppins'] mb-12 leading-relaxed text-base md:text-lg">
-                Whether you are interested in a reading, a signed copy of <span class="font-bold text-[#145072]">Eureka and the Magical Trio</span>, or simply want to share your thoughts, feel free to reach out.
+                Whether you are interested in a reading, a signed copy of <span class="font-bold text-[#145072]">How Many Unusual Events in One Life?</span> or simply want to share your thoughts, feel free to reach out.
             </p>
 
             <!-- Email -->
