@@ -7,7 +7,7 @@
     style="background-image: url('{{ asset('assets/web/hero-section.PNG') }}');">
 
     <!-- Overlay to ensure text and navbar remain readable -->
-    <div class="absolute inset-0 bg-white/70 lg:bg-gradient-to-r from-white/90 via-white/60 to-transparent"></div>
+    <div class="absolute inset-0 "></div>
 
     <!--
       Note: Added pt-32 or pt-40 here to push the content down
