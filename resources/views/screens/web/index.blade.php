@@ -3,18 +3,28 @@
 @section('content')
 
 <section
-        class="bg-white w-full px-12 md:px-24 py-16 md:py-24 flex flex-col-reverse lg:flex-row items-center justify-between max-w-screen-2xl mx-auto">
+    class="relative w-full bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{{ asset('assets/web/hero-section.PNG') }}');">
+
+    <!-- Overlay to ensure text and navbar remain readable -->
+    <div class="absolute inset-0 bg-white/70 lg:bg-gradient-to-r from-white/90 via-white/60 to-transparent"></div>
+
+    <!--
+      Note: Added pt-32 or pt-40 here to push the content down
+      so it doesn't overlap with your absolute header
+    -->
+    <div class="relative z-10 w-full px-12 md:px-24 pt-40 pb-16 md:pb-24 flex flex-col-reverse lg:flex-row items-center justify-between max-w-screen-2xl mx-auto">
+
         <div class="w-full lg:w-1/2 pr-0 lg:pr-16 mt-12 lg:mt-0 flex flex-col items-start">
-            <span class="text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-4 font-['Poppins']">
+            <span class="text-xs font-bold uppercase tracking-[0.3em] text-gray-600 mb-4 font-['Poppins']">
                 Memoir & Autobiography
             </span>
 
-            <h1
-                class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#145072] mb-6 leading-tight font-heavitas">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#145072] mb-6 leading-tight font-heavitas drop-shadow-sm">
                 How Many Unusual Events in One Life?
             </h1>
 
-            <p class="text-gray-500 mb-10 text-lg font-['Poppins'] leading-relaxed">
+            <p class="text-gray-700 mb-10 text-lg font-['Poppins'] leading-relaxed font-medium">
                 Discover <strong>RARE EDITION</strong>, the compelling memoir by Evelyn Kasal. Explore six decades of farm life, resilient career transitions, and unexpected twists in this extraordinary true story.
             </p>
 
@@ -24,11 +34,14 @@
             </a>
         </div>
 
-        <div class=" flex justify-center lg:justify-end">
-            <img src="{{ asset('assets/web/book-evelyn.png') }}" alt="Rare Edition Book Cover"
-                class="w-[280px] md:w-[360px] h-auto rounded-sm shadow-[20px_25px_50px_-12px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02]">
-        </div>
-    </section>
+        <!-- <div class="flex justify-center lg:justify-end"> -->
+        <!--     <img src="{{ asset('assets/web/book-evelyn.png') }}" alt="Rare Edition Book Cover" -->
+        <!--         class="w-[280px] md:w-[360px] h-auto rounded-sm shadow-[20px_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-500 group-hover:scale-[1.02]"> -->
+        <!-- </div> -->
+
+    </div>
+</section>
+
 
 <section class="bg-[#F5F5F5] w-full py-16 md:py-24 px-6 md:px-12 lg:px-24 font-['Poppins']">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

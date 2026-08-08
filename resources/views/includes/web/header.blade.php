@@ -1,6 +1,6 @@
-<div class="w-full flex justify-center pt-8 px-4 md:px-8" x-data="{ open: false }">
+<div class="{{ request()->routeIs('home') ? 'absolute top-0 left-0 z-50' : 'relative' }} w-full flex justify-center pt-8 px-4 md:px-8" x-data="{ open: false }">
     <header
-        class="relative w-full lg:w-[95%] max-w-screen-2xl bg-[#F5F5F5] shadow-sm py-6 px-8 md:px-12 flex items-center justify-between z-40">
+        class="relative w-full lg:w-[95%] max-w-screen-2xl py-6 px-8 md:px-12 flex items-center justify-between z-40 {{ request()->routeIs('home') ? 'bg-transparent' : 'bg-[#F5F5F5] shadow-sm' }}">
 
         <div class="text-2xl md:text-3xl font-heavitas uppercase tracking-wider text-[#145072]">
             Evelyn Kasal
