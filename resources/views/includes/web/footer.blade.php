@@ -5,10 +5,10 @@
         <div class="lg:col-span-2">
             <h3 class="text-xl font-bold font-heavitas text-white mb-6 tracking-wide">Links</h3>
             <ul class="flex flex-col space-y-4 text-gray-300 font-['Poppins'] text-sm">
-                <li><a href="#" class="hover:text-white transition-colors">Evelyn Kasal</a></li>
+                <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Evelyn Kasal</a></li>
                 <!-- <li><a href="#" class="hover:text-white transition-colors">Eureka and the Magical Trio Book</a></li> -->
-                <li><a href="#" class="hover:text-white transition-colors">About the Author</a></li>
-                <li><a href="#" class="hover:text-white transition-colors">Blogs</a></li>
+                <li><a href="{{ route('about') }}" class="hover:text-white transition-colors">About the Author</a></li>
+                <li><a href="{{ route('book') }}" class="hover:text-white transition-colors">Book</a></li>
             </ul>
         </div>
 
@@ -16,7 +16,7 @@
         <div class="lg:col-span-3">
             <h3 class="text-xl font-bold font-heavitas text-white mb-6 tracking-wide">Books</h3>
             <ul class="flex flex-col space-y-4 text-gray-300 font-['Poppins'] text-sm">
-                <li><a href="#" class="hover:text-white transition-colors">Buy Evelyn Kasal Books</a></li>
+                <li><a href="https://www.amazon.com/Rare-Many-Unusual-Events-Life/dp/B0BSRHG1MC/ref=mp_s_a_1_1?s=books&sr=1-1" class="hover:text-white transition-colors">Buy Evelyn Kasal Books</a></li>
             </ul>
         </div>
 
