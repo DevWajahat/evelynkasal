@@ -122,37 +122,60 @@
 
             <!-- Right Side: Contact Form -->
             <div class="bg-white rounded-xl shadow-2xl p-8 md:p-10 font-['Poppins']">
-                <!-- Example Contact Form mapped to your existing Livewire component or route -->
-                <form action="#" method="POST" class="space-y-6">
+
+                <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
+                    @csrf
+
+                    @if(session('success'))
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-md p-4 text-sm">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-bold text-[#145072] mb-2">First Name</label>
-                            <input type="text" placeholder="Jane" required
-                                class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="Jane"
+                                class="w-full px-4 py-3 border {{ $errors->has('first_name') ? 'border-red-500' : 'border-gray-200' }} rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                            @error('first_name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-[#145072] mb-2">Last Name</label>
-                            <input type="text" placeholder="Doe" required
-                                class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Doe"
+                                class="w-full px-4 py-3 border {{ $errors->has('last_name') ? 'border-red-500' : 'border-gray-200' }} rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                            @error('last_name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-bold text-[#145072] mb-2">Email Address</label>
-                        <input type="email" placeholder="jane@example.com" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                        <input type="text" name="email" value="{{ old('email') }}" placeholder="jane@example.com"
+                            class="w-full px-4 py-3 border {{ $errors->has('email') ? 'border-red-500' : 'border-gray-200' }} rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                        @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-bold text-[#145072] mb-2">Subject</label>
-                        <input type="text" placeholder="Speaking Engagement, Book Inquiry, etc." required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                        <input type="text" name="subject" value="{{ old('subject') }}" placeholder="Speaking Engagement, Book Inquiry, etc."
+                            class="w-full px-4 py-3 border {{ $errors->has('subject') ? 'border-red-500' : 'border-gray-200' }} rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white">
+                        @error('subject')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-bold text-[#145072] mb-2">Message</label>
-                        <textarea rows="5" placeholder="Write your message here..." required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white resize-y"></textarea>
+                        <textarea name="message" rows="5" placeholder="Write your message here..."
+                            class="w-full px-4 py-3 border {{ $errors->has('message') ? 'border-red-500' : 'border-gray-200' }} rounded-md focus:outline-none focus:border-[#145072] focus:ring-1 focus:ring-[#145072] transition-colors bg-gray-50 focus:bg-white resize-y">{{ old('message') }}</textarea>
+                        @error('message')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <button type="submit"

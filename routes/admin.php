@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CmsPageMetaManagmentController;
 use App\Http\Controllers\Admin\CmsManagmentController;
+use App\Http\Controllers\Admin\ContactInboxController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -37,4 +38,11 @@ Route::prefix('cms/page-sections')->controller(CmsManagmentController::class)->n
     Route::post('/store', 'store')->name('store');
     Route::put('/update/{cms}', 'update')->name('update');
     Route::delete('/destroy/{cms}', 'destroy')->name('destroy');
+});
+
+
+Route::prefix('inbox')->controller(ContactInboxController::class)->name('inbox.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{contact}', 'show')->name('show');
+    Route::delete('/{contact}', 'destroy')->name('destroy');
 });

@@ -22,6 +22,13 @@
                 <span>Page Sections</span>
             </a>
 
+            <div class="pt-3 pb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Manage</div>
+
+            <a href="{{ route('admin.inbox.index') }}" class="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors {{ request()->routeIs('admin.inbox.*') ? 'text-brand-600 bg-brand-50' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
+                <i class="fa fa-envelope-open-text w-5 text-center"></i>
+                <span>Contact Inbox</span>
+            </a>
+
             <div class="pt-3 pb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Home Page Sections</div>
 
             <a href="{{ route('admin.cms.meta.herosection.form') }}" class="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors {{ request()->routeIs('admin.cms.meta.herosection.*') ? 'text-brand-600 bg-brand-50' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
