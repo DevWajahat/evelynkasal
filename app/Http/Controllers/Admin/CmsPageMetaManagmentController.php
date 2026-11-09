@@ -363,4 +363,108 @@ class CmsPageMetaManagmentController extends Controller
 
         return redirect()->route('admin.cms.meta.contact.getInTouch')->with('success', 'Contact page content updated successfully.');
     }
+
+    public function booksStorytellingSection()
+    {
+        $cms = Cms::firstOrCreate(
+            ['page' => 'book', 'type' => 'storytelling_section']
+        );
+
+        $metas = CmsMeta::where('cms_id', $cms->id)
+            ->pluck('meta_value', 'meta_key')
+            ->toArray();
+
+        $galleryImages = isset($metas['gallery_images']) && !empty($metas['gallery_images'])
+            ? json_decode($metas['gallery_images'], true)
+            : [];
+
+        return view('screens.admin.cms.book-cms.storytelling.form', compact('cms', 'metas', 'galleryImages'));
+    }
+
+    public function saveBooksStorytellingSection(Request $request)
+    {
+        $request->validate([
+            'banner_title' => 'required|string|max:255',
+            'badge' => 'nullable|string|max:255',
+            'book_title' => 'required|string|max:255',
+            'author_name' => 'nullable|string|max:255',
+            'rating' => 'nullable|numeric|min:1|max:5',
+            'button_text' => 'nullable|string|max:255',
+            'button_link' => 'nullable|string|max:255',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:5120',
+            'author_photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:5120',
+        ]);
+
+        $cms = Cms::firstOrCreate(
+            ['page' => 'book', 'type' => 'storytelling_section']
+        );
+
+        $inputs = $request->except(['_token', 'featured_image', 'author_photo', 'gallery_images']);
+
+        if ($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            $imageName = 'book_main_' . time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/cms'), $imageName);
+            $inputs['featured_image'] = asset('uploads/cms/' . $imageName);
+        }
+
+        if ($request->hasFile('author_photo')) {
+            $photo = $request->file('author_photo');
+            $photoName = 'author_avatar_' . time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path('uploads/cms'), $photoName);
+            $inputs['author_photo'] = asset('uploads/cms/' . $photoName);
+        }
+
+        if ($request->hasFile('gallery_images')) {
+            $existingGalleryMeta = CmsMeta::where('cms_id', $cms->id)->where('meta_key', 'gallery_images')->first();
+            $currentGallery = ($existingGalleryMeta && !empty($existingGalleryMeta->meta_value))
+                ? json_decode($existingGalleryMeta->meta_value, true)
+                : [];
+
+            foreach ($request->file('gallery_images') as $file) {
+                $galleryName = 'book_thumb_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/cms'), $galleryName);
+                $currentGallery[] = asset('uploads/cms/' . $galleryName);
+            }
+
+            $inputs['gallery_images'] = json_encode(array_values($currentGallery));
+        }
+
+        foreach ($inputs as $key => $value) {
+            CmsMeta::updateOrCreate(
+                [
+                    'cms_id' => $cms->id,
+                    'meta_key' => $key,
+                ],
+                [
+                    'meta_value' => $value ?? '',
+                ]
+            );
+        }
+
+        return redirect()->route('admin.cms.meta.book.storytellingSection.form')->with('success', 'Books page storytelling section updated successfully.');
+    }
+
+    public function deleteBookGalleryImage(Request $request)
+    {
+        $cms = Cms::where('page', 'books')->where('type', 'storytelling_section')->first();
+
+        if ($cms) {
+            $galleryMeta = CmsMeta::where('cms_id', $cms->id)->where('meta_key', 'gallery_images')->first();
+
+            if ($galleryMeta) {
+                $gallery = json_decode($galleryMeta->meta_value, true) ?? [];
+                $targetUrl = $request->input('image_url');
+
+                $gallery = array_filter($gallery, fn($item) => $item !== $targetUrl);
+
+                $galleryMeta->update([
+                    'meta_value' => json_encode(array_values($gallery)),
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.cms.meta.book.storytellingSection.form')->with('success', 'Gallery thumbnail removed.');
+    }
 }

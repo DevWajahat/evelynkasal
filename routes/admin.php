@@ -26,6 +26,10 @@ Route::prefix('cms/meta/')->controller(CmsPageMetaManagmentController::class)->n
 
     Route::get('contact/get-in-touch', 'contactSection')->name('contact.getInTouch');
     Route::post('contact/get-in-touch', 'saveContactSection')->name('contact.getInTouch.save');
+
+    Route::get('book/storytelling-section', 'booksStorytellingSection')->name('book.storytellingSection.form');
+    Route::post('book/storytelling-section', 'saveBooksStorytellingSection')->name('book.storytellingSection.save');
+    Route::delete('book/storytelling-section/gallery-delete', 'deleteBookGalleryImage')->name('book.storytellingSection.gallery.delete');
 });
 
 Route::prefix('cms/page-sections')->controller(CmsManagmentController::class)->name('cms.')->group(function () {

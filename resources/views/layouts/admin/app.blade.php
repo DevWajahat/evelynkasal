@@ -44,6 +44,13 @@
                 <span>Newsletter</span>
             </a>
 
+            <div class="pt-3 pb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Books Page Sections</div>
+
+            <a href="{{ route('admin.cms.meta.book.storytellingSection.form') }}" class="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors {{ request()->routeIs('admin.cms.meta.book.storytellingSection.*') ? 'text-brand-600 bg-brand-50' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
+                <i class="fa fa-book-open w-5 text-center"></i>
+                <span>Storytelling Section</span>
+            </a>
+
             <div class="pt-3 pb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">About Page Sections</div>
 
             <a href="{{ route('admin.cms.meta.about-page.form') }}" class="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors {{ request()->routeIs('admin.cms.meta.about-page.*') ? 'text-brand-600 bg-brand-50' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
@@ -60,13 +67,10 @@
         </nav>
 
         <div class="p-4 border-t border-slate-200">
-            <form action="{{ route('admin.logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-rose-600 hover:bg-rose-50 text-sm font-medium transition-colors">
-                    <i class="fa fa-power-off w-5 text-center"></i>
-                    <span>Log Out</span>
-                </button>
-            </form>
+            <a href="{{ route('admin.logout') }}" class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-rose-600 hover:bg-rose-50 text-sm font-medium transition-colors">
+                <i class="fa fa-power-off w-5 text-center"></i>
+                <span>Log Out</span>
+            </a>
         </div>
     </aside>
 
